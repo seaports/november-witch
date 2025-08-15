@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - November Witch</title>
+    <meta name="description" content="Get in touch with November Witch for general inquiries, booking, and press. Follow us on our social media channels.">
+    <meta name="keywords" content="November Witch, contact, booking, press, email, social media">
+    <link rel="icon" type="image/x-icon" href="/assets/novwitchfavicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .dm-serif-text-regular { font-family: "DM Serif Text", serif; font-weight: 400; font-style: normal; }
+        .dm-serif-text-regular-italic { font-family: "DM Serif Text", serif; font-weight: 400; font-style: italic; }
+        body { font-family: 'DM Serif Text', monospace; background: radial-gradient(circle at center, #13b75e, #13461d); color: #e6e6e6; cursor: crosshair; min-height: 100vh; padding: 20px; }
+        
+        /* THE FIX IS HERE: Added id='noiseTurbulence' to the feTurbulence tag */
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 95 95'><filter id='noiseFilter'><feTurbulence id='noiseTurbulence' type='fractalNoise' baseFrequency='0.74' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>"); background-size: cover; opacity: 0.035; z-index: -1; pointer-events: none; }
+        
+        .container { max-width: 800px; margin: 140px auto 40px auto; position: relative; z-index: 10; }
+        .back-door-container { position: fixed; top: 20px; left: 20px; width: 100px; height: auto; cursor: pointer; z-index: 20; display: flex; align-items: center; justify-content: center; }
+        .back-door { width: 100%; height: auto; display: block; transform: scaleX(-1); }
+        .back-door:hover { content: url("assets/victorianopen.png"); }
+        .back-overlay { animation: floatY 4s ease-in-out infinite; position: absolute; width: 70%; height: auto; pointer-events: none; mix-blend-mode: difference; filter: drop-shadow(0 0 6px white) drop-shadow(0 0 10px white); z-index: 1; top: 10%; transform: translateY(-10%) translateY(0); }
+        @keyframes floatY { 0%   { transform: translateY(0px); } 50%  { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .header { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; display: flex; align-items: center; gap: 20px; }
+        .header img:first-child { height: 80px; }
+        .header img:last-child { height: 100px; }
+        .page-title { font-size: 36px; color: #ffffff; text-shadow: 0 0 20px rgba(255,255,255,0.3); margin-bottom: 20px; font-family: 'DM Serif Text', serif; text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .contact-section { background: linear-gradient(145deg, #2a2a4a, #1a1a3a); border: 2px solid #4a4a6a; border-radius: 8px; padding: 30px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+        .section-title { font-size: 20px; color: #ccccee; margin-bottom: 20px; text-transform: lowercase; letter-spacing: 2px; }
+        .contact-info { line-height: 2; }
+        .contact-info p { margin-bottom: 15px; color: #aaaacc; }
+        .contact-info strong { color: #ffffff; }
+        .email-link { color: #66aaff; text-decoration: none; transition: color 0.3s ease; }
+        .email-link:hover { color: #88ccff; text-shadow: 0 0 10px rgba(102, 170, 255, 0.3); }
+        @media (max-width: 768px) {
+            .container { margin: 160px auto 40px auto; }
+            .contact-grid, .form-row { grid-template-columns: 1fr; gap: 20px; }
+            .page-title { font-size: 24px; }
+            .header { flex-direction: column; gap: 10px; top: 15px; position: absolute; }
+            .header img:first-child, .header img:last-child { height: 60px; }
+            .back-door-container { width: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="assets/contact.png" alt="Contact Page"/>
+    </div>
+    
+    <a href="index.html" class="back-door-container">
+        <img src="assets/victorianclosed.png" class="back-door" alt="A closed victorian door that opens on hover, revealing a glowing portal back to the home page." />
+        <img src="assets/back.png" class="back-overlay" alt="The word 'Back' floating."/>
+    </a>
+
+    <div class="container">       
+        <div class="contact-grid">
+            <div class="contact-section">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-info">
+                    <p><strong>General Inquiries:</strong><br>
+                    <a href="mailto:info@novemberwitch.com" class="email-link">info@novemberwitch.com</a></p>
+                    
+                    <p><strong>Booking:</strong><br>
+                    <a href="mailto:shows@novemberwitch.com" class="email-link">shows@novemberwitch.com</a></p>
+                    
+                    <p><strong>Press:</strong><br>
+                    <a href="mailto:press@novemberwitch.com" class="email-link">press@novemberwitch.com</a></p>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h2 class="section-title">Follow Us</h2>
+                <div class="contact-info">
+                    <p><strong>Instagram:</strong><br>
+                    <a href="https://www.instagram.com/novemberwitchband" target="_blank" rel="noopener noreferrer" class="email-link">@novemberwitchband</a></p>
+                    
+                    <p><strong>Bandcamp:</strong><br>
+                    <a href="https://novemberwitch.bandcamp.com" target="_blank" rel="noopener noreferrer" class="email-link">novemberwitch.bandcamp.com</a></p>
+                    
+                    <p><strong>Spotify:</strong><br>
+                    <a href="https://open.spotify.com/artist/3ooGshPXoFHvOwhJZvlI1w" target="_blank" rel="noopener noreferrer" class="email-link">November Witch</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

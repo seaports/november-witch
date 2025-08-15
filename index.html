@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>November Witch - Official Website</title>
+    <meta name="description" content="The official landing page for the band November Witch. Find information about shows, music, and how to get in contact.">
+    <meta name="keywords" content="November Witch, November Witch band, music, band, live shows, contact">
+    <link rel="icon" type="image/x-icon" href="/assets/novwitchfavicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .dm-serif-text-regular {
+            font-family: "DM Serif Text", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .dm-serif-text-regular-italic {
+            font-family: "DM Serif Text", serif;
+            font-weight: 400;
+            font-style: italic;
+        }
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+    
+        body {
+            font-family: 'DM Serif Text', monospace;
+            background: radial-gradient(circle at center, #1F0322, #0B2027);
+            color: #e6e6e6;
+            cursor: crosshair;
+            position: relative;
+            min-height: 100vh;
+        }
+    
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 140px 20px 40px 20px;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 95 95'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.74' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>");
+            background-size: cover;
+            opacity: 0.035;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .nav-grid {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .nav-item {
+            position: relative;
+            width: 280px;
+            aspect-ratio: 14 / 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-door {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: content 0.2s ease-in-out;
+        }
+        
+        /* This class is now added via JS to keep the door open */
+
+        .door-open[data-door="wooden"] { content: url("assets/woodenopen.png"); }
+        .door-open[data-door="horse"] { content: url("assets/horseopen.png"); }
+        .door-open[data-door="victorian"] { content: url("assets/victorianopen.png"); }
+
+        /* Hover effects remain for interactivity */
+        .nav-door[data-door="wooden"]:hover { content: url("assets/woodenopen.png"); }
+        .nav-door[data-door="horse"]:hover { content: url("assets/horseopen.png"); }
+        .nav-door[data-door="victorian"]:hover { content: url("assets/victorianopen.png"); }
+
+
+        @keyframes floatY {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .nav-overlay {
+            animation: floatY 4s ease-in-out infinite;
+            position: absolute;
+            width: 70%;
+            height: auto;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            filter: drop-shadow(0 0 6px white) drop-shadow(0 0 10px white);
+            z-index: 1;
+            top: 10%;
+            transform: translateY(-10%) translateY(0);
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header img:first-child {
+            height: 80px;
+        }
+
+        .header img:last-child {
+            height: 100px;
+        }
+    
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto; /* Ensures scrolling is enabled on mobile */
+            }
+
+            .container {
+                /* Increased top padding to prevent content from being under the header */
+                padding: 220px 20px 60px 20px; 
+            }
+
+            .nav-grid {
+                /* Stacks the doors vertically as requested */
+                flex-direction: column;
+                gap: 50px;
+            }
+    
+            .nav-item {
+                width: 260px; /* Slightly larger for better touch interaction */
+            }
+            
+            .header {
+                /* Changed from fixed to absolute, so it scrolls with the page and doesn't overlap content */
+                position: absolute; 
+                top: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header img:first-child,
+            .header img:last-child {
+                height: 70px; /* Adjusted logo size for mobile */
+            }
+        }
+    
+        .click-effect {
+            position: fixed;
+            pointer-events: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            z-index: 1001;
+            animation: clickRipple 0.6s ease-out forwards;
+        }
+    
+        @keyframes clickRipple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="assets/textlogo.png" alt="November Witch text"/>
+        <img src="assets/logo.png" alt="November Witch band logo"/>
+    </div>
+
+    <div class="container">
+        <div class="nav-grid">
+            <a href="about.html" class="nav-item">
+                <img src="assets/woodenclosed.png" class="nav-door" data-door="wooden" alt="A closed wooden door that opens on hover, revealing a glowing portal to the About page." />
+                <img src="assets/about.png" class="nav-overlay" alt="The word 'About' floating."/>
+            </a>
+    
+            <a href="shows.html" class="nav-item">
+                <img src="assets/horseclosed.png" class="nav-door" data-door="horse" alt="A closed door with a horse knocker that opens on hover, revealing a glowing portal to the Shows page." />
+                <img src="assets/shows.png" class="nav-overlay" alt="The word 'Shows' floating."/>
+            </a>
+    
+            <a href="contact.html" class="nav-item">
+                <img src="assets/victorianclosed.png" class="nav-door" data-door="victorian" alt="A closed victorian door that opens on hover, revealing a glowing portal to the Contact page." />
+                <img src="assets/contact.png" class="nav-overlay" alt="The word 'Contact' floating."/>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * EXPLANATION OF THE SCRIPT:
+         * * This script enhances the user experience by adding three main features:
+         * 1. Persistent Door States: When a user clicks a door, the website "remembers" it. On their next visit,
+         * that door will already be open. This is achieved using 'localStorage', a simple key-value storage
+         * built into web browsers. It's lightweight and doesn't slow down the site.
+         * * 2. Click Effects (Sound and Visual): A subtle clicking sound and a visual ripple effect are triggered
+         * on every click, providing satisfying auditory and visual feedback. The sound is encoded directly
+         * into the script (Base64) to avoid an extra file download.
+         * * 3. Delayed Navigation: To solve the issue where the "open door" image wasn't visible before the page
+         * changed, the script now waits for a fraction of a second (400 milliseconds) after a click before
+         * navigating to the new page. This gives the user time to see the door open.
+         */
+
+        // Removed: const doorStatesKey = 'novemberWitchDoorStates';
+
+        // --- Sound and Visual Effects ---
+
+        function playClickSound() {
+            // The audio data is a Base64 string, which means the sound is embedded directly in the code.
+            // This is efficient for very small audio files as it saves an HTTP request.
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBzJhw7rQ');
+            audio.volume = 0.1;
+            // We use .catch() to prevent an error from showing in the console if the browser blocks autoplay.
+            audio.play().catch(() => {});
+        }
+
+        function createClickEffect(x, y) {
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.style.left = (x - 10) + 'px'; // Center the ripple on the cursor
+            effect.style.top = (y - 10) + 'px';
+            document.body.appendChild(effect);
+            // The effect is removed from the page after its animation completes.
+            setTimeout(() => document.body.removeChild(effect), 600);
+        }
+        
+        // --- Door State Management --- (Entire section below removed)
+
+        // Removed: function loadDoorStates() { ... }
+        // Removed: function saveDoorState(doorType) { ... }
+
+        // --- Event Listeners ---
+
+        // Removed: document.addEventListener('DOMContentLoaded', loadDoorStates);
+
+        // Add click handlers to each navigation door.
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // 1. Prevent the browser from immediately navigating to the link's href.
+                e.preventDefault();
+
+                const doorImg = this.querySelector('.nav-door');
+                const doorType = doorImg.getAttribute('data-door');
+                const destination = this.href;
+
+                // 2. Removed: saveDoorState(doorType);
+
+                // 3. Apply the visual and audio feedback.
+                doorImg.classList.add('door-open');
+                playClickSound();
+                createClickEffect(e.clientX, e.clientY);
+
+                // 4. Wait 400ms before navigating to give the user time to see the door open.
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 250);
+            });
+        });
+
+        // Add a generic click effect for clicks anywhere else on the page.
+        document.addEventListener('click', function(e) {
+            // e.target.closest('.nav-item') checks if the click was on a door or inside one.
+            // If it wasn't, we play the general click effect.
+            if (!e.target.closest('.nav-item')) {
+                createClickEffect(e.clientX, e.clientY);
+                playClickSound();
+            }
+        });
+    </script>
+</body>
+</html>

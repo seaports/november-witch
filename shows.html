@@ -23,7 +23,7 @@
         
         body { 
             font-family: 'DM Serif Text', monospace; 
-            background: radial-gradient(circle at center, #b71359, #380219); /* Matching about page gradient */
+            background: radial-gradient(circle at center, #2d89e1, #15596c);
             color: #e6e6e6; 
             cursor: crosshair; 
             min-height: 100vh; 
@@ -47,36 +47,23 @@
         
         .container { 
             max-width: 1200px; 
-            margin: 120px auto 40px auto; 
+            margin: 80px auto 40px auto;
             position: relative; 
             z-index: 10; 
         }
         
-        .header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 10;
-            filter: drop-shadow(0 0 6px white) drop-shadow(0 0 10px white);
-            mix-blend-mode: difference;
-        }
-        .header img { height: 100px; width: auto; display: block; margin: 0 auto; }
-
-        /* Styles for the back door button */
         .back-door-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
+            position: relative;
             width: 100px;
             height: auto;
             cursor: pointer;
-            z-index: 20;
+            z-index: 5;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 0 20px 0;
         }
+        
         .back-door {
             width: 100%;
             height: auto;
@@ -84,9 +71,9 @@
             transform: scaleX(-1);
             transition: content 0.2s ease-in-out;
         }
+        
         .back-door[data-door="horse"]:hover { content: url("assets/horseopen.png"); }
-        .back-door-open[data-door="horse"] { content: url("assets/horseopen.png"); }
-
+        
         .back-overlay {
             animation: floatY 4s ease-in-out infinite;
             position: absolute;
@@ -100,6 +87,12 @@
             transform: translateY(-10%) translateY(0);
         }
         @keyframes floatY { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header img { height: 100px; width: auto; display: block; margin: 0 auto; }
 
         .shows-section {
             background-color: rgba(0, 0, 0, 0.4);
@@ -240,6 +233,14 @@
             text-align: center;
         }
 
+        .no-shows {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 2px solid #4a4a6a;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
         /* Modal styles */
         .modal {
             display: none;
@@ -374,12 +375,7 @@
             }
             
             .container {
-                margin: 200px auto 40px auto;
-            }
-            
-            .header {
-                position: absolute;
-                top: 20px;
+                margin: 40px auto 40px auto;
             }
             
             .header img { 
@@ -388,8 +384,6 @@
             
             .back-door-container { 
                 width: 80px;
-                top: 120px;
-                left: 10px;
             }
             
             .shows-section {
@@ -415,16 +409,16 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="assets/shows.png" alt="Shows Page"/>
-    </div>
-
-    <a href="index.html" class="back-door-container">
-        <img src="assets/horseclosed.png" class="back-door" data-door="horse" alt="A closed door with a horse knocker that opens on hover, revealing a glowing portal back to the home page." />
-        <img src="assets/back.png" class="back-overlay" alt="The word 'Back' floating."/>
-    </a>
-
     <div class="container">
+        <a href="index.html" class="back-door-container">
+            <img src="assets/horseclosed.png" class="back-door" data-door="horse" alt="A closed door with a horse knocker that opens on hover, revealing a glowing portal back to the home page." />
+            <img src="assets/back.png" class="back-overlay" alt="The word 'Back' floating."/>
+        </a>
+
+        <div class="header">
+            <img src="assets/shows.png" alt="Shows Page"/>
+        </div>
+
         <div class="shows-section">
             <h2 class="section-title">Upcoming Shows</h2>
             <div class="no-shows">
@@ -588,19 +582,6 @@
             const images = document.querySelectorAll('.carousel-image');
             const prevIndex = (currentCarouselIndex - 1 + images.length) % images.length;
             showCarouselImage(prevIndex);
-        }
-
-        // Back door functionality
-        const backDoorContainer = document.querySelector('.back-door-container');
-        if (backDoorContainer) {
-            backDoorContainer.addEventListener('click', function(e) {
-                e.preventDefault();
-                const doorImg = this.querySelector('.back-door');
-                doorImg.classList.add('back-door-open');
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 250);
-            });
         }
 
         // Close modal with Escape key

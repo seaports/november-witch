@@ -85,18 +85,11 @@
             display: block;
             transition: content 0.2s ease-in-out;
         }
-        
-        /* This class is now added via JS to keep the door open */
 
-        .door-open[data-door="wooden"] { content: url("assets/woodenopen.png"); }
-        .door-open[data-door="horse"] { content: url("assets/horseopen.png"); }
-        .door-open[data-door="victorian"] { content: url("assets/victorianopen.png"); }
-
-        /* Hover effects remain for interactivity */
+        /* Hover effects for interactivity */
         .nav-door[data-door="wooden"]:hover { content: url("assets/woodenopen.png"); }
         .nav-door[data-door="horse"]:hover { content: url("assets/horseopen.png"); }
         .nav-door[data-door="victorian"]:hover { content: url("assets/victorianopen.png"); }
-
 
         @keyframes floatY {
             0%   { transform: translateY(0px); }
@@ -139,26 +132,23 @@
     
         @media (max-width: 768px) {
             body {
-                overflow-y: auto; /* Ensures scrolling is enabled on mobile */
+                overflow-y: auto;
             }
 
             .container {
-                /* Increased top padding to prevent content from being under the header */
                 padding: 220px 20px 60px 20px; 
             }
 
             .nav-grid {
-                /* Stacks the doors vertically as requested */
                 flex-direction: column;
                 gap: 50px;
             }
     
             .nav-item {
-                width: 260px; /* Slightly larger for better touch interaction */
+                width: 260px;
             }
             
             .header {
-                /* Changed from fixed to absolute, so it scrolls with the page and doesn't overlap content */
                 position: absolute; 
                 top: 20px;
                 flex-direction: column;
@@ -167,7 +157,7 @@
 
             .header img:first-child,
             .header img:last-child {
-                height: 70px; /* Adjusted logo size for mobile */
+                height: 70px;
             }
         }
     
@@ -214,80 +204,33 @@
     </div>
 
     <script>
-        /**
-         * EXPLANATION OF THE SCRIPT:
-         * * This script enhances the user experience by adding three main features:
-         * 1. Persistent Door States: When a user clicks a door, the website "remembers" it. On their next visit,
-         * that door will already be open. This is achieved using 'localStorage', a simple key-value storage
-         * built into web browsers. It's lightweight and doesn't slow down the site.
-         * * 2. Click Effects (Sound and Visual): A subtle clicking sound and a visual ripple effect are triggered
-         * on every click, providing satisfying auditory and visual feedback. The sound is encoded directly
-         * into the script (Base64) to avoid an extra file download.
-         * * 3. Delayed Navigation: To solve the issue where the "open door" image wasn't visible before the page
-         * changed, the script now waits for a fraction of a second (400 milliseconds) after a click before
-         * navigating to the new page. This gives the user time to see the door open.
-         */
-
-        // Removed: const doorStatesKey = 'novemberWitchDoorStates';
-
-        // --- Sound and Visual Effects ---
-
+        // Sound and Visual Effects
         function playClickSound() {
-            // The audio data is a Base64 string, which means the sound is embedded directly in the code.
-            // This is efficient for very small audio files as it saves an HTTP request.
             const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBzJhw7rQ');
             audio.volume = 0.1;
-            // We use .catch() to prevent an error from showing in the console if the browser blocks autoplay.
             audio.play().catch(() => {});
         }
 
         function createClickEffect(x, y) {
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.style.left = (x - 10) + 'px'; // Center the ripple on the cursor
+            effect.style.left = (x - 10) + 'px';
             effect.style.top = (y - 10) + 'px';
             document.body.appendChild(effect);
-            // The effect is removed from the page after its animation completes.
             setTimeout(() => document.body.removeChild(effect), 600);
         }
         
-        // --- Door State Management --- (Entire section below removed)
-
-        // Removed: function loadDoorStates() { ... }
-        // Removed: function saveDoorState(doorType) { ... }
-
-        // --- Event Listeners ---
-
-        // Removed: document.addEventListener('DOMContentLoaded', loadDoorStates);
-
-        // Add click handlers to each navigation door.
+        // Add click handlers to each navigation door
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
-                // 1. Prevent the browser from immediately navigating to the link's href.
-                e.preventDefault();
-
-                const doorImg = this.querySelector('.nav-door');
-                const doorType = doorImg.getAttribute('data-door');
-                const destination = this.href;
-
-                // 2. Removed: saveDoorState(doorType);
-
-                // 3. Apply the visual and audio feedback.
-                doorImg.classList.add('door-open');
                 playClickSound();
                 createClickEffect(e.clientX, e.clientY);
-
-                // 4. Wait 400ms before navigating to give the user time to see the door open.
-                setTimeout(() => {
-                    window.location.href = destination;
-                }, 250);
+                // No delay - let the link navigate normally
             });
         });
 
-        // Add a generic click effect for clicks anywhere else on the page.
+        // Add a generic click effect for clicks anywhere else on the page
         document.addEventListener('click', function(e) {
-            // e.target.closest('.nav-item') checks if the click was on a door or inside one.
-            // If it wasn't, we play the general click effect.
             if (!e.target.closest('.nav-item')) {
                 createClickEffect(e.clientX, e.clientY);
                 playClickSound();

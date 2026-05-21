@@ -3,9 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>November Witch - Official Website</title>
-    <meta name="description" content="The official landing page for the band November Witch. Find information about shows, music, and how to get in contact.">
-    <meta name="keywords" content="November Witch, November Witch band, music, band, live shows, contact">
+
+    <title>November Witch | Folk Electronica Rock Band | London, Ontario</title>
+    <meta name="description" content="November Witch is a folk electronica rock band from London, Ontario. Listen to singles 'Orion' and 'Selena', and watch for their forthcoming 2026 EP 'A Farm w/ No Horses'. Find show dates, music, and booking info.">
+    <meta name="keywords" content="November Witch, November Witch band, folk electronica rock band London Ontario, dark alternative band Canada, November Witch Orion, November Witch Selena, A Farm w No Horses EP, indie music Ontario, indie music Canada, alternative music Canada, November Witch shows, November Witch 2026">
+    <link rel="canonical" href="https://www.novemberwitch.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.novemberwitch.com/">
+    <meta property="og:title" content="November Witch | Folk Electronica Rock Band | London, Ontario">
+    <meta property="og:description" content="November Witch is a folk electronica rock band from London, Ontario. Listen to singles 'Orion' and 'Selena', and watch for their forthcoming 2026 EP 'A Farm w/ No Horses'.">
+    <meta property="og:image" content="https://www.novemberwitch.com/assets/logo.png">
+    <meta property="og:site_name" content="November Witch">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="November Witch | Folk Electronica Rock Band | London, Ontario">
+    <meta name="twitter:description" content="November Witch is a folk electronica rock band from London, Ontario. Listen to singles 'Orion' and 'Selena', and watch for their forthcoming 2026 EP 'A Farm w/ No Horses'.">
+    <meta name="twitter:image" content="https://www.novemberwitch.com/assets/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "November Witch",
+      "url": "https://www.novemberwitch.com",
+      "logo": "https://www.novemberwitch.com/assets/logo.png",
+      "genre": ["Folk", "Electronica", "Gothic Rock", "Indie Rock"],
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "London, Ontario, Canada"
+      },
+      "album": [
+        {
+          "@type": "MusicAlbum",
+          "name": "A Farm w/ No Horses",
+          "albumReleaseType": "EP",
+          "datePublished": "2026"
+        }
+      ],
+      "track": [
+        {
+          "@type": "MusicRecording",
+          "name": "Orion"
+        },
+        {
+          "@type": "MusicRecording",
+          "name": "Selena"
+        }
+      ],
+      "sameAs": []
+    }
+    </script>
+
     <link rel="icon" type="image/x-icon" href="/assets/novwitchfavicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,6 +178,16 @@
         .header img:last-child {
             height: 100px;
         }
+
+        /* Visually hidden but readable by search engines */
+        .seo-text {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
     
         @media (max-width: 768px) {
             body {
@@ -179,24 +238,29 @@
     </style>
 </head>
 <body>
+
+    <!-- Hidden SEO text: crawlable by Google, invisible to visitors -->
+    <h1 class="seo-text">November Witch — Folk Electronica Rock Band from London, Ontario</h1>
+    <p class="seo-text">November Witch is a folk electronica rock band from London, Ontario. Listen to singles 'Orion' and 'Selena', and watch for their forthcoming 2026 EP 'A Farm w/ No Horses'. Find show dates, music, and booking info.</p>
+
     <div class="header">
-        <img src="assets/textlogo.png" alt="November Witch text"/>
-        <img src="assets/logo.png" alt="November Witch band logo"/>
+        <img src="assets/textlogo.png" alt="November Witch text logo"/>
+        <img src="assets/logo.png" alt="November Witch band logo — folk electronica rock band from London, Ontario"/>
     </div>
 
     <div class="container">
         <div class="nav-grid">
-            <a href="about.html" class="nav-item">
+            <a href="about.html" class="nav-item" aria-label="About November Witch">
                 <img src="assets/woodenclosed.png" class="nav-door" data-door="wooden" alt="A closed wooden door that opens on hover, revealing a glowing portal to the About page." />
                 <img src="assets/about.png" class="nav-overlay" alt="The word 'About' floating."/>
             </a>
     
-            <a href="shows.html" class="nav-item">
+            <a href="shows.html" class="nav-item" aria-label="November Witch live shows and tour dates">
                 <img src="assets/horseclosed.png" class="nav-door" data-door="horse" alt="A closed door with a horse knocker that opens on hover, revealing a glowing portal to the Shows page." />
                 <img src="assets/shows.png" class="nav-overlay" alt="The word 'Shows' floating."/>
             </a>
     
-            <a href="contact.html" class="nav-item">
+            <a href="contact.html" class="nav-item" aria-label="Contact November Witch for booking and press">
                 <img src="assets/victorianclosed.png" class="nav-door" data-door="victorian" alt="A closed victorian door that opens on hover, revealing a glowing portal to the Contact page." />
                 <img src="assets/contact.png" class="nav-overlay" alt="The word 'Contact' floating."/>
             </a>
@@ -225,7 +289,6 @@
             item.addEventListener('click', function(e) {
                 playClickSound();
                 createClickEffect(e.clientX, e.clientY);
-                // No delay - let the link navigate normally
             });
         });
 

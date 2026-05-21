@@ -140,15 +140,9 @@
         .show-item.future:hover { 
             background: linear-gradient(45deg, #5a5a8a, #4a4a7a); 
         }
-        .show-item.future .show-title {
-            color: #ffffff;
-        }
-        .show-item.future .show-date {
-            color: #ddddff;
-        }
-        .show-item.future .show-venue {
-            color: #bbbbdd;
-        }
+        .show-item.future .show-title { color: #ffffff; }
+        .show-item.future .show-date { color: #ddddff; }
+        .show-item.future .show-venue { color: #bbbbdd; }
 
         /* Past show styling - more muted, sepia-toned */
         .show-item.past { 
@@ -159,15 +153,9 @@
             background: linear-gradient(45deg, #4a4a6a, #3a3a5a); 
             opacity: 1;
         }
-        .show-item.past .show-title {
-            color: #cccccc;
-        }
-        .show-item.past .show-date {
-            color: #aaaaaa;
-        }
-        .show-item.past .show-venue {
-            color: #888888;
-        }
+        .show-item.past .show-title { color: #cccccc; }
+        .show-item.past .show-date { color: #aaaaaa; }
+        .show-item.past .show-venue { color: #888888; }
         .show-item.past::after {
             content: "PAST";
             position: absolute;
@@ -184,7 +172,7 @@
 
         .show-image {
             width: 100%;
-            aspect-ratio: 4/5; /* Fixed 4:5 aspect ratio */
+            aspect-ratio: 4/5;
             background: linear-gradient(45deg, #2a2a4a, #1a1a3a);
             border-bottom: 1px solid #4a4a6a;
             display: flex;
@@ -222,23 +210,11 @@
             opacity: 0.8;
         }
 
-        /* Placeholder styling */
-        .show-placeholder {
-            background: linear-gradient(45deg, #3a3a5a, #2a2a4a);
-            color: #8a8aaa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            text-align: center;
-        }
-
         .no-shows {
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            border: 2px solid #4a4a6a;
-            border-radius: 8px;
-            padding: 30px;
+            text-align: center;
+            color: #aaaacc;
+            font-size: 16px;
+            padding: 40px 20px;
         }
 
         /* Modal styles */
@@ -289,7 +265,7 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 4/5; /* Fixed 4:5 aspect ratio for carousel */
+            aspect-ratio: 4/5;
             background: #000;
             overflow: hidden;
         }
@@ -322,13 +298,8 @@
             background: rgba(0, 0, 0, 0.9);
         }
 
-        .carousel-prev {
-            left: 10px;
-        }
-
-        .carousel-next {
-            right: 10px;
-        }
+        .carousel-prev { left: 10px; }
+        .carousel-next { right: 10px; }
 
         .carousel-indicators {
             position: absolute;
@@ -405,7 +376,6 @@
                 padding: 8px 12px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -421,150 +391,84 @@
 
         <div class="shows-section">
             <h2 class="section-title">Upcoming Shows</h2>
-            <div class="no-shows">
-                <p style="text-align: center; color: #aaaacc; font-size: 16px; padding: 40px 20px;">
-                    No shows currently planned.
-                    
-                </p>
-                <!-- <div class="show-item future" data-folder="FDF" data-image-count="4">
-                    <div class="show-image">
-                        <img src="assets/shows/FDF/1.jpg" alt="Field Day Festival" onerror="this.style.display='none'; this.parentNode.innerHTML='Show Image Coming Soon';">
-                    </div>
-                    <div class="show-details">
-                        <div class="show-title">Field Day Festival</div>
-                        <div class="show-date">August 2nd, 2025</div>
-                        <div class="show-venue">Victoria Park</div>
-                    </div> -->
-            </div>
+            <div id="upcoming-shows-container"></div>
         </div>
 
         <div class="shows-section">
             <h2 class="section-title">Past Shows</h2>
-            <div class="shows-grid">
-                <!-- Past shows - add class="past" and data-folder="FOLDER_NAME" -->
-
-                <div class="show-item past" data-folder="Pride25" data-image-count="4">
-                    <div class="show-image">
-                        <img src="assets/shows/Pride25/1.jpg" alt="London Pride '25" onerror="this.style.display='none'; this.parentNode.innerHTML='Show Image Archive';">
-                    </div>
-                    <div class="show-details">
-                        <div class="show-title">London Pride</div>
-                        <div class="show-date">July 19th, 2025</div>
-                        <div class="show-venue">Victoria Park</div>
-                    </div>
-                </div>
-
-                <div class="show-item past" data-folder="STS" data-image-count="4">
-                    <div class="show-image">
-                        <img src="assets/shows/STS/1.jpg" alt="Set the Scene" onerror="this.style.display='none'; this.parentNode.innerHTML='Show Image Archive';">
-                    </div>
-                    <div class="show-details">
-                        <div class="show-title">Set the Scene</div>
-                        <div class="show-date">June 17th, 2025</div>
-                        <div class="show-venue">Marconi Club of London</div>
-                    </div>
-                </div>
-                <div class="show-item past" data-folder="BOTB" data-image-count="2">
-                    <div class="show-image">
-                        <img src="assets/shows/BOTB/1.jpg" alt="Battle of the High School Bands" onerror="this.style.display='none'; this.parentNode.innerHTML='Show Image Archive';">
-                    </div>
-                    <div class="show-details">
-                        <div class="show-title">Battle of the High School Bands</div>
-                        <div class="show-date">June 5th, 2025</div>
-                        <div class="show-venue">Marconi Club of London</div>
-                    </div>
-                </div>
-                <div class="show-item past" data-folder="RSR" data-image-count="4">
-                    <div class="show-image">
-                        <img src="assets/shows/RSR/1.jpg" alt="Ready, Set, Rock" onerror="this.style.display='none'; this.parentNode.innerHTML='Show Image Archive';">
-                    </div>
-                    <div class="show-details">
-                        <div class="show-title">Ready, Set, Rock</div>
-                        <div class="show-date">January 31st, 2025</div>
-                        <div class="show-venue">Marconi Club of London</div>
-                    </div>
-                </div>
-            </div>
+            <div id="past-shows-container"></div>
         </div>
     </div>
 
     <script>
         let currentCarouselIndex = 0;
-        let currentCarouselImages = [];
 
-        // Modal functionality for show items
-        const showItems = document.querySelectorAll('.show-item');
-        showItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const folder = this.getAttribute('data-folder');
-                const imageCount = parseInt(this.getAttribute('data-image-count')) || 1;
-                const title = this.querySelector('.show-title').textContent;
-                const date = this.querySelector('.show-date').textContent;
-                const venue = this.querySelector('.show-venue').textContent;
+        function createShowCard(show, type) {
+            const item = document.createElement('div');
+            item.className = `show-item ${type}`;
+            item.setAttribute('data-folder', show.folder);
+            item.setAttribute('data-image-count', show.imageCount);
 
-                // Create modal
-                const modal = document.createElement('div');
-                modal.className = 'modal';
-                modal.style.display = 'block';
-                
-                // Generate carousel images
-                let carouselImagesHTML = '';
-                let carouselDotsHTML = '';
-                currentCarouselImages = [];
-                
-                for (let i = 1; i <= imageCount; i++) {
-                    const imagePath = `assets/shows/${folder}/${i}.jpg`;
-                    currentCarouselImages.push(imagePath);
-                    const activeClass = i === 1 ? 'active' : '';
-                    carouselImagesHTML += `<img src="${imagePath}" class="carousel-image ${activeClass}" alt="${title} Photo ${i}" onerror="this.style.display='none';">`;
-                    carouselDotsHTML += `<div class="carousel-dot ${activeClass}" onclick="showCarouselImage(${i-1})"></div>`;
-                }
+            item.innerHTML = `
+                <div class="show-image">
+                    <img src="assets/shows/${show.folder}/1.jpg" alt="${show.title}" onerror="this.style.display='none'; this.parentNode.innerHTML='Show Image ${type === 'past' ? 'Archive' : 'Coming Soon'}';">
+                </div>
+                <div class="show-details">
+                    <div class="show-title">${show.title}</div>
+                    <div class="show-date">${show.date}</div>
+                    <div class="show-venue">${show.venue}</div>
+                </div>
+            `;
 
-                const content = document.createElement('div');
-                content.className = 'modal-content';
-                content.innerHTML = `
-                    <div class="modal-close">&times;</div>
-                    <div class="modal-header">
-                        <h2 class="modal-title">${title}</h2>
-                        <div class="modal-details">${date} • ${venue}</div>
-                    </div>
-                    <div class="carousel-container">
-                        ${carouselImagesHTML}
-                        ${imageCount > 1 ? `
-                            <button class="carousel-nav carousel-prev" onclick="prevCarouselImage()">&lt;</button>
-                            <button class="carousel-nav carousel-next" onclick="nextCarouselImage()">&gt;</button>
-                            <div class="carousel-indicators">
-                                ${carouselDotsHTML}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-                
-                modal.appendChild(content);
-                document.body.appendChild(modal);
-                currentCarouselIndex = 0;
-                
-                // Close modal functionality
-                modal.querySelector('.modal-close').addEventListener('click', () => {
-                    document.body.removeChild(modal);
-                });
-                
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        document.body.removeChild(modal);
-                    }
-                });
-            });
-        });
+            item.addEventListener('click', () => openModal(show));
+            return item;
+        }
 
-        // Carousel navigation functions
+        function openModal(show) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.display = 'block';
+
+            let carouselImagesHTML = '';
+            let carouselDotsHTML = '';
+
+            for (let i = 1; i <= show.imageCount; i++) {
+                const activeClass = i === 1 ? 'active' : '';
+                carouselImagesHTML += `<img src="assets/shows/${show.folder}/${i}.jpg" class="carousel-image ${activeClass}" alt="${show.title} Photo ${i}" onerror="this.style.display='none';">`;
+                carouselDotsHTML += `<div class="carousel-dot ${activeClass}" onclick="showCarouselImage(${i - 1})"></div>`;
+            }
+
+            const content = document.createElement('div');
+            content.className = 'modal-content';
+            content.innerHTML = `
+                <div class="modal-close">&times;</div>
+                <div class="modal-header">
+                    <h2 class="modal-title">${show.title}</h2>
+                    <div class="modal-details">${show.date} • ${show.venue}</div>
+                </div>
+                <div class="carousel-container">
+                    ${carouselImagesHTML}
+                    ${show.imageCount > 1 ? `
+                        <button class="carousel-nav carousel-prev" onclick="prevCarouselImage()">&lt;</button>
+                        <button class="carousel-nav carousel-next" onclick="nextCarouselImage()">&gt;</button>
+                        <div class="carousel-indicators">${carouselDotsHTML}</div>
+                    ` : ''}
+                </div>
+            `;
+
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            currentCarouselIndex = 0;
+
+            content.querySelector('.modal-close').addEventListener('click', () => document.body.removeChild(modal));
+            modal.addEventListener('click', (e) => { if (e.target === modal) document.body.removeChild(modal); });
+        }
+
         function showCarouselImage(index) {
             const images = document.querySelectorAll('.carousel-image');
             const dots = document.querySelectorAll('.carousel-dot');
-            
             images.forEach(img => img.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
-            
             if (images[index]) {
                 images[index].classList.add('active');
                 dots[index].classList.add('active');
@@ -574,32 +478,52 @@
 
         function nextCarouselImage() {
             const images = document.querySelectorAll('.carousel-image');
-            const nextIndex = (currentCarouselIndex + 1) % images.length;
-            showCarouselImage(nextIndex);
+            showCarouselImage((currentCarouselIndex + 1) % images.length);
         }
 
         function prevCarouselImage() {
             const images = document.querySelectorAll('.carousel-image');
-            const prevIndex = (currentCarouselIndex - 1 + images.length) % images.length;
-            showCarouselImage(prevIndex);
+            showCarouselImage((currentCarouselIndex - 1 + images.length) % images.length);
         }
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const modal = document.querySelector('.modal');
-                if (modal) {
-                    document.body.removeChild(modal);
-                }
-            }
-            // Arrow key navigation in carousel
-            else if (e.key === 'ArrowRight' && document.querySelector('.modal')) {
-                nextCarouselImage();
-            }
-            else if (e.key === 'ArrowLeft' && document.querySelector('.modal')) {
-                prevCarouselImage();
-            }
+        document.addEventListener('keydown', function (e) {
+            const modal = document.querySelector('.modal');
+            if (e.key === 'Escape' && modal) document.body.removeChild(modal);
+            else if (e.key === 'ArrowRight' && modal) nextCarouselImage();
+            else if (e.key === 'ArrowLeft' && modal) prevCarouselImage();
         });
+
+        // Load shows from JSON
+        fetch('shows.json')
+            .then(res => res.json())
+            .then(data => {
+                // Upcoming shows
+                const upcomingContainer = document.getElementById('upcoming-shows-container');
+                if (data.upcoming && data.upcoming.length > 0) {
+                    const grid = document.createElement('div');
+                    grid.className = 'shows-grid';
+                    data.upcoming.forEach(show => grid.appendChild(createShowCard(show, 'future')));
+                    upcomingContainer.appendChild(grid);
+                } else {
+                    upcomingContainer.innerHTML = '<p class="no-shows">No shows currently planned.</p>';
+                }
+
+                // Past shows
+                const pastContainer = document.getElementById('past-shows-container');
+                if (data.past && data.past.length > 0) {
+                    const grid = document.createElement('div');
+                    grid.className = 'shows-grid';
+                    data.past.forEach(show => grid.appendChild(createShowCard(show, 'past')));
+                    pastContainer.appendChild(grid);
+                } else {
+                    pastContainer.innerHTML = '<p class="no-shows">No past shows recorded.</p>';
+                }
+            })
+            .catch(err => {
+                console.error('Failed to load shows.json:', err);
+                document.getElementById('upcoming-shows-container').innerHTML = '<p class="no-shows">Could not load shows.</p>';
+                document.getElementById('past-shows-container').innerHTML = '<p class="no-shows">Could not load shows.</p>';
+            });
     </script>
 </body>
 </html>

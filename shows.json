@@ -1,0 +1,33 @@
+{
+  "upcoming": [],
+  "past": [
+    {
+      "folder": "Pride25",
+      "imageCount": 4,
+      "title": "London Pride",
+      "date": "July 19th, 2025",
+      "venue": "Victoria Park"
+    },
+    {
+      "folder": "STS",
+      "imageCount": 4,
+      "title": "Set the Scene",
+      "date": "June 17th, 2025",
+      "venue": "Marconi Club of London"
+    },
+    {
+      "folder": "BOTB",
+      "imageCount": 2,
+      "title": "Battle of the High School Bands",
+      "date": "June 5th, 2025",
+      "venue": "Marconi Club of London"
+    },
+    {
+      "folder": "RSR",
+      "imageCount": 4,
+      "title": "Ready, Set, Rock",
+      "date": "January 31st, 2025",
+      "venue": "Marconi Club of London"
+    }
+  ]
+}

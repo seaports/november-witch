@@ -309,18 +309,28 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 4/5;
             background: #000;
             overflow: hidden;
+        
+            aspect-ratio: unset;
+        
+            max-height: 80vh;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
+        
         .carousel-image {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+        
+            max-height: 80vh;
+        
+            object-fit: contain;
             display: none;
         }
-
+        
         .carousel-image.active {
             display: block;
         }
@@ -478,7 +488,7 @@
 
             for (let i = 1; i <= show.imageCount; i++) {
                 const activeClass = i === 1 ? 'active' : '';
-                carouselImagesHTML += `<img src="assets/shows/${show.folder}/${i}.jpg" class="carousel-image ${activeClass}" alt="${show.title} Photo ${i}" style="max-height: 80vh; max-width: 100%; object-fit: contain;" onerror="this.style.display='none';">`;
+                carouselImagesHTML += `<img src="assets/shows/${show.folder}/${i}.jpg" class="carousel-image ${activeClass}" alt="${show.title} Photo ${i}" onerror="this.style.display='none';">`;
                 carouselDotsHTML += `<div class="carousel-dot ${activeClass}" onclick="showCarouselImage(${i - 1})"></div>`;
             }
 

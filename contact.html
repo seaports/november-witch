@@ -70,8 +70,26 @@
             position: relative; 
             z-index: 10; 
         }
-        .back-door-container { position: relative; width: 100px; height: auto; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; margin: 0 0 20px 0; }
-        .back-door { width: 100%; height: auto; display: block; transform: scaleX(-1); }
+        .back-door-container {
+            position: relative;
+            width: 100px;
+            min-height: 150px; 
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center;
+            margin: 0 0 20px 0;
+        }
+        
+        .back-door {
+            width: 100%;
+            height: auto;
+            object-fit: contain; 
+            display: block;
+            transform: scaleX(-1);
+            transition: content 0.2s ease-in-out;
+        }
         .back-door:hover { content: url("assets/victorianopen.png"); }
         .back-overlay { animation: floatY 4s ease-in-out infinite; position: absolute; width: 70%; height: auto; pointer-events: none; mix-blend-mode: difference; filter: drop-shadow(0 0 6px white) drop-shadow(0 0 10px white); z-index: 1; top: 10%; transform: translateY(-10%) translateY(0); }
         @keyframes floatY { 0%   { transform: translateY(0px); } 50%  { transform: translateY(-10px); } 100% { transform: translateY(0px); } }

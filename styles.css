@@ -231,6 +231,144 @@ body::before {
     100% { transform: translateY(0px); }
 }
 
+/* Generic "nothing to show" message (e.g. no shows, no results, no posts) */
+.empty-state {
+    text-align: center;
+    color: #aaaacc;
+    font-size: 16px;
+    padding: 40px 20px;
+}
+
+/* =========================================
+   Modal / Lightbox Component
+   ========================================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(15px);
+    border: 2px solid #6a6a8a;
+    border-radius: 8px;
+    color: #ccccee;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 20px 20px 0 20px;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.modal-details {
+    font-size: 16px;
+    color: #ccccee;
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    opacity: 0.7;
+}
+
+/* =========================================
+   Carousel Component (used inside modals for multi-image display)
+   ========================================= */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    overflow: hidden;
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    display: none;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-prev { left: 10px; }
+.carousel-next { right: 10px; }
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: white;
+}
+
 /* =========================================
    Shared Mobile Responsive Styles
    (base pattern — pages may add their own rules inside this same
@@ -261,5 +399,15 @@ body::before {
 
     .content-section {
         padding: 20px;
+    }
+
+    .modal-content {
+        width: 95vw;
+        max-height: 85vh;
+    }
+
+    .carousel-nav {
+        font-size: 18px;
+        padding: 8px 12px;
     }
 }

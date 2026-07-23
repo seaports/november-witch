@@ -61,55 +61,10 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .dm-serif-text-regular {
-            font-family: "DM Serif Text", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-        .dm-serif-text-regular-italic {
-            font-family: "DM Serif Text", serif;
-            font-weight: 400;
-            font-style: italic;
-        }
-        html, body {
-            height: 100%;
-            overflow-x: hidden;
-        }
-    
-        body {
-            font-family: 'DM Serif Text', monospace;
-            background: radial-gradient(circle at center, #1F0322, #0B2027);
-            color: #e6e6e6;
-            cursor: crosshair;
-            position: relative;
-            min-height: 100vh;
-        }
-    
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 140px 20px 40px 20px;
-        }
-        
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 95 95'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.74' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>");
-            background-size: cover;
-            opacity: 0.035;
-            z-index: -1;
-            pointer-events: none;
-        }
+        /* Page-specific styles for index only.
+           Resets, fonts, body background/noise, .seo-text, and the
+           centered-container pattern all live in styles.css now
+           (.container-centered covers the flex-centered layout below). */
 
         .nav-grid {
             display: flex;
@@ -118,7 +73,7 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-    
+
         .nav-item {
             position: relative;
             width: 280px;
@@ -133,19 +88,13 @@
             width: 100%;
             height: auto;
             display: block;
-            transition: content 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
         }
 
         /* Hover effects for interactivity */
         .nav-door[data-door="wooden"]:hover { content: url("assets/woodenopen.png"); }
         .nav-door[data-door="horse"]:hover { content: url("assets/horseopen.png"); }
         .nav-door[data-door="victorian"]:hover { content: url("assets/victorianopen.png"); }
-
-        @keyframes floatY {
-            0%   { transform: translateY(0px); }
-            50%  { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
 
         .nav-overlay {
             animation: floatY 4s ease-in-out infinite;
@@ -160,7 +109,9 @@
             transform: translateY(-10%) translateY(0);
         }
 
-        .header {
+        /* Index-only fixed dual-logo header (distinct from the shared
+           .header component used on inner pages, so given its own class) */
+        .site-header {
             position: fixed;
             top: 20px;
             left: 50%;
@@ -172,55 +123,41 @@
             gap: 20px;
         }
 
-        .header img:first-child {
+        .site-header img:first-child {
             height: 80px;
         }
 
-        .header img:last-child {
+        .site-header img:last-child {
             height: 100px;
         }
 
-        /* Visually hidden but readable by search engines */
-        .seo-text {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-        }
-    
         @media (max-width: 768px) {
-            body {
-                overflow-y: auto;
-            }
-
-            .container {
-                padding: 220px 20px 60px 20px; 
+            .container-centered {
+                padding: 220px 20px 60px 20px;
             }
 
             .nav-grid {
                 flex-direction: column;
                 gap: 50px;
             }
-    
+
             .nav-item {
                 width: 260px;
             }
-            
-            .header {
-                position: absolute; 
+
+            .site-header {
+                position: absolute;
                 top: 20px;
                 flex-direction: column;
                 gap: 15px;
             }
 
-            .header img:first-child,
-            .header img:last-child {
+            .site-header img:first-child,
+            .site-header img:last-child {
                 height: 70px;
             }
         }
-    
+
         .click-effect {
             position: fixed;
             pointer-events: none;
@@ -231,7 +168,7 @@
             z-index: 1001;
             animation: clickRipple 0.6s ease-out forwards;
         }
-    
+
         @keyframes clickRipple {
             0% { transform: scale(0); opacity: 1; }
             100% { transform: scale(3); opacity: 0; }
@@ -244,23 +181,23 @@
     <h1 class="seo-text">November Witch — Folk Electronica Rock Band from London, Ontario</h1>
     <p class="seo-text">November Witch is a folk electronica rock band from London, Ontario. Listen to singles 'Orion' and 'Selena', and watch for their forthcoming 2026 EP 'A Farm w/ No Horses'. Find show dates, music, and booking info.</p>
 
-    <div class="header">
+    <div class="site-header">
         <img src="assets/textlogo.png" alt="November Witch text logo"/>
         <img src="assets/logo.png" alt="November Witch band logo — folk electronica rock band from London, Ontario"/>
     </div>
 
-    <div class="container">
+    <div class="container-centered">
         <div class="nav-grid">
             <a href="about.html" class="nav-item" aria-label="About November Witch">
                 <img src="assets/woodenclosed.png" class="nav-door" data-door="wooden" alt="A closed wooden door that opens on hover, revealing a glowing portal to the About page." />
                 <img src="assets/about.png" class="nav-overlay" alt="The word 'About' floating."/>
             </a>
-    
+
             <a href="shows.html" class="nav-item" aria-label="November Witch live shows and tour dates">
                 <img src="assets/horseclosed.png" class="nav-door" data-door="horse" alt="A closed door with a horse knocker that opens on hover, revealing a glowing portal to the Shows page." />
                 <img src="assets/shows.png" class="nav-overlay" alt="The word 'Shows' floating."/>
             </a>
-    
+
             <a href="contact.html" class="nav-item" aria-label="Contact November Witch for booking and press">
                 <img src="assets/victorianclosed.png" class="nav-door" data-door="victorian" alt="A closed victorian door that opens on hover, revealing a glowing portal to the Contact page." />
                 <img src="assets/contact.png" class="nav-overlay" alt="The word 'Contact' floating."/>
@@ -284,7 +221,7 @@
             document.body.appendChild(effect);
             setTimeout(() => document.body.removeChild(effect), 600);
         }
-        
+
         // Add click handlers to each navigation door
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {

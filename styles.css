@@ -28,7 +28,7 @@ html, body {
    Global Background & Body Styling
    ========================================= */
 body {
-    font-family: 'DM Serif Text', monospace;
+   font-family: 'DM Serif Text', serif;
     /* Black & White radial background */
     background: radial-gradient(circle at center, #2b2b2b, #000000);
     color: #e6e6e6;
@@ -123,7 +123,7 @@ body::before {
     height: auto;
     display: block;
     transform: scaleX(-1);
-    transition: content 0.2s ease-in-out;
+   transition: transform 0.2s ease-in-out;
 }
 
 .back-overlay {

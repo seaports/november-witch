@@ -81,241 +81,53 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Base styles matching index */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        .dm-serif-text-regular { font-family: "DM Serif Text", serif; font-weight: 400; font-style: normal; }
-        .dm-serif-text-regular-italic { font-family: "DM Serif Text", serif; font-weight: 400; font-style: italic; }
-        
-        html, body {
-            height: 100%;
-            overflow-x: hidden;
-        }
-        
-        body { 
-            font-family: 'DM Serif Text', monospace; 
+        /* Page-specific styles for About only.
+           Resets, fonts, body noise layer, .seo-text, .header, .back-door*,
+           .content-grid, .gallery-grid/.gallery-item/.album-info all live in
+           styles.css now. .bio-section/.photo-gallery/.discography and
+           .bio-title/.gallery-title map onto the shared .content-section and
+           .section-title classes below, so the page-specific rules for them
+           have been removed. */
+
+        body {
             background: radial-gradient(circle at center, #b71359, #380219);
-            color: #e6e6e6; 
-            cursor: crosshair; 
-            min-height: 100vh; 
-            padding: 20px;
-            position: relative;
         }
-        
-        body::before { 
-            content: ""; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh; 
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 95 95'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.74' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>"); 
-            background-size: cover; 
-            opacity: 0.035; 
-            z-index: -1; 
-            pointer-events: none; 
-        }
-        
-        .container { 
-            max-width: 1000px; 
-            margin: 80px auto 40px auto;
-            position: relative; 
-            z-index: 10; 
-        }
-        
-        .back-door-container {
-            position: relative;
-            width: 100px;
-            height: auto;
-            cursor: pointer;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 0 20px 0;
-        }
-        
-        .back-door {
-            width: 100%;
-            height: auto;
-            display: block;
-            transform: scaleX(-1);
-            transition: content 0.2s ease-in-out;
-        }
-        
-        .back-door[data-door="wooden"]:hover { content: url("assets/woodenopen.png"); }
-        
-        .back-overlay {
-            animation: floatY 4s ease-in-out infinite;
-            position: absolute;
-            width: 70%;
-            height: auto;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            filter: drop-shadow(0 0 6px white) drop-shadow(0 0 10px white);
-            z-index: 1;
-            top: 10%;
-            transform: translateY(-10%) translateY(0);
-        }
-        @keyframes floatY { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
+        .container {
+            max-width: 1000px; /* narrower than the shared 1200px default */
         }
-        .header img { height: 100px; width: auto; display: block; margin: 0 auto; }
 
-        .page-title { font-size: 36px; color: #ffffff; text-shadow: 0 0 20px rgba(255,255,255,0.3); margin-bottom: 20px; font-family: 'Times New Roman', serif; }
-        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .bio-section {
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            border: 2px solid #4a4a6a;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-        .bio-title { font-size: 20px; color: #ccccee; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .bio-text { line-height: 1.6; color: #aaaacc; margin-bottom: 20px; }
-        .members-list { list-style: none; }
-        .members-list li { padding: 8px 0; border-bottom: 1px solid #3a3a5a; color: #ccccee; }
-        .members-list li:last-child { border-bottom: none; }
-        .photo-gallery, .discography {
-            grid-column: 1 / -1;
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            border: 2px solid #4a4a6a;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-        .gallery-title { font-size: 20px; color: #ccccee; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .gallery-item { 
-            aspect-ratio: 1; 
-            background: linear-gradient(45deg, #3a3a5a, #2a2a4a); 
-            border: 1px solid #4a4a6a; 
-            border-radius: 8px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #8a8aaa; 
-            font-size: 12px; 
-            text-align: center; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            overflow: hidden; 
-            position: relative;
-        }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-item:hover { background: linear-gradient(45deg, #4a4a6a, #3a3a5a); border-color: #6a6a8a; }
-        
-        .album-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        .page-title {
+            font-size: 36px;
             color: #ffffff;
-            padding: 15px 10px 10px;
-            font-size: 12px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', serif;
         }
-        .album-info h3 {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 4px;
+
+        .bio-text {
+            line-height: 1.6;
+            color: #aaaacc;
+            margin-bottom: 20px;
         }
-        .album-info p {
-            font-size: 11px;
-            opacity: 0.9;
+
+        .members-list {
+            list-style: none;
         }
-        
-        /* Mobile responsive styles */
+        .members-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #3a3a5a;
+            color: #ccccee;
+        }
+        .members-list li:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 768px) {
-            body {
-                overflow-y: auto;
-                padding: 10px;
-            }
-            
-            .container {
-                margin: 40px auto 40px auto;
-            }
-            
-            .content-grid { 
-                grid-template-columns: 1fr; 
-                gap: 20px; 
-            }
-            
-            .page-title { 
-                font-size: 24px; 
-            }
-            
-            .header img { 
-                height: 70px;
-            }
-            
-            .back-door-container { 
-                width: 80px;
-            }
-            
-            .bio-section, .photo-gallery, .discography {
-                padding: 20px;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
+            .page-title {
+                font-size: 24px;
             }
         }
-        
-        .show-item, .no-shows, .modal-content, .modal-image {
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            border: none;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-            filter: url(#fractalBorder);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .modal-content {
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            filter: url(#fractalBorder);
-        }
-        .modal-image {
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            filter: url(#fractalBorderSmall);
-            border-bottom: 1px solid #4a4a6a;
-            margin: 0 auto 20px;
-            padding: 0;
-        }
-        .seo-text {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-        }
-        .show-image {
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
-            filter: url(#fractalBorderSmall);
-            height: 200px;
-            border-bottom: 1px solid #4a4a6a;
-            padding: 0;
-        }
-        .show-item {
-            padding: 0;
-        }
-        .show-details {
-            padding: 20px 30px 30px;
-        }
-
     </style>
 </head>
 <body>
@@ -337,8 +149,8 @@
         </div>
 
         <div class="content-grid">
-            <div class="bio-section">
-                <h2 class="bio-title">The Band</h2>
+            <div class="content-section">
+                <h2 class="section-title">The Band</h2>
                 <p class="bio-text">
                     November Witch are a Canadian rock band based in London, Ontario, described as "music from a field."
                 </p>
@@ -347,8 +159,8 @@
                 </p>
             </div>
 
-            <div class="bio-section">
-                <h2 class="bio-title">Members</h2>
+            <div class="content-section">
+                <h2 class="section-title">Members</h2>
                 <ul class="members-list">
                     <li>Millie - Lead Vocals, Bass, Mandolin, Rhythm Guitar</li>
                     <li>Jazz - Lead Guitar, Banjo</li>
@@ -358,8 +170,8 @@
             </div>
         </div>
 
-        <div class="discography">
-            <h2 class="gallery-title">Discography</h2>
+        <div class="content-section">
+            <h2 class="section-title">Discography</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="assets/covers/selena.jpg" alt="The cover art for November Witch's song Selena - Jack sitting on top of a blue EcoSport holding a cigarette, with drawn-on angel wings"/>

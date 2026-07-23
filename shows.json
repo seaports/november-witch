@@ -1,5 +1,8 @@
 {
   "upcoming": [
+	
+],
+  "past": [
 	{
       "folder": "SocialBowlJune26",
       "imageCount": 1,
@@ -13,9 +16,7 @@
       "title": "Gears 14 w/ Wishbone & Bilal Nasser",
       "date": "May 23rd, 2026",
       "venue": "Squeaky Wheels"
-    }
-],
-  "past": [
+    },
 	{
       "folder": "Iconoclast26",
       "imageCount": 3,

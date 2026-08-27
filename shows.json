@@ -1,6 +1,19 @@
 {
   "upcoming": [
-	
+	{
+      "folder": "StompfestSept26",
+      "imageCount": 0,
+      "title": "Stompfest",
+      "date": "Friday, September 11th, 2026 • 8:00 PM",
+      "venue": "Poacher's Arms"
+    },
+	{
+      "folder": "HolyDiverOct26",
+      "imageCount": 0,
+      "title": "Holy Diver",
+      "date": "Saturday, October 3rd, 2026",
+      "venue": "Holy Diver"
+    }
 ],
   "past": [
 	{
